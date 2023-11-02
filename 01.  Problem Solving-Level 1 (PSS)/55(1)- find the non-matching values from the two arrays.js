@@ -1,0 +1,55 @@
+//..find the non-matching values from the two various random number list..//
+let randomNumberInputOne=[1,2,3,5,2];
+let randomNumberInputTwo=[2,3,4,6];
+let nonMatchingNumbers=[];
+for(i=0;i<randomNumberInputOne.length;i++){
+    for(j=i+1;j<randomNumberInputOne.length;j++){
+        if(randomNumberInputOne[i]==randomNumberInputOne[j]){
+            for(k=j;k<randomNumberInputOne.length-1;k++){
+                randomNumberInputOne[k]=randomNumberInputOne[k+1];
+            }
+            randomNumberInputOne.length=randomNumberInputOne.length-1;
+            j--;
+        }
+    }
+}
+for(i=0;i<randomNumberInputTwo.length;i++){
+    for(j=i+1;j<randomNumberInputTwo.length;j++){
+        if(randomNumberInputTwo[i]==randomNumberInputTwo[j]){
+            for(k=j;k<randomNumberInputTwo.length-1;k++){
+                randomNumberInputTwo[k]=randomNumberInputTwo[k+1];
+            }
+            randomNumberInputTwo.length=randomNumberInputTwo.length-1;
+            j--;
+        }
+    }
+}
+for(i=0;i<randomNumberInputOne.length;i++){
+    for(j=0;j<randomNumberInputTwo.length;j++){
+        if(randomNumberInputOne[i]==randomNumberInputTwo[j]){
+            for(k=j;k<randomNumberInputTwo.length-1;k++){
+                randomNumberInputTwo[k]=randomNumberInputTwo[k+1];
+            }
+            randomNumberInputTwo.length=randomNumberInputTwo.length-1;
+            j--;
+            for(k=i;k<randomNumberInputOne.length-1;k++){
+                randomNumberInputOne[k]=randomNumberInputOne[k+1];
+            }
+            randomNumberInputOne.length=randomNumberInputOne.length-1;
+            i--;
+        }
+    }
+}
+if(randomNumberInputOne.length>=1){
+for(i=0;i<randomNumberInputOne.length;i++){
+    nonMatchingNumbers.push(randomNumberInputOne[i]);
+}
+}
+if(randomNumberInputTwo.length>=1){
+for(i=0;i<randomNumberInputTwo.length;i++){
+    nonMatchingNumbers.push(randomNumberInputTwo[i]);
+}
+}
+console.log(nonMatchingNumbers);
+console.log(randomNumberInputOne);
+console.log(randomNumberInputTwo);
